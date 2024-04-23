@@ -19,3 +19,7 @@
 ## 🔢 이슈번호 
 > 예) .../taskify/issues/[이슈번호]
 >.../taskify/issues/
+
+
+## ⛔️ To Reviewers
+close #
