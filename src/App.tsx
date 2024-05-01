@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <div>메인페이지</div>
+      <div>안녕나는 메인 페이지야</div>
     </>
   );
 }
