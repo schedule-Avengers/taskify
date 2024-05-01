@@ -6,7 +6,19 @@
   "scripts": {
     "postinstall": "husky install",
     "format": "prettier --cache --write .",
-    "lint": "eslint --cache ."
+    "start": "vite",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --cache",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{tsx,ts,jsx,js}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@tanstack/react-query": "^5.31.0",
@@ -40,11 +52,5 @@
     "vite": "^5.2.0",
     "vite-plugin-next-react-router": "^0.7.1",
     "vite-tsconfig-paths": "^4.3.2"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --cache --write",
-      "eslint --cache --fix --max-warnings=0"
-    ]
   }
 }
