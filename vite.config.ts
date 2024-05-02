@@ -14,4 +14,18 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  resolve: {
+    alias: [
+      { find: '@', replacement: resolve(__dirname, 'src') },
+      { find: '@axios', replacement: resolve(__dirname, 'src/axios') },
+      {
+        find: '@components',
+        replacement: resolve(__dirname, 'src/components'),
+      },
+      {
+        find: '@pages',
+        replacement: resolve(__dirname, 'src/pages'),
+      },
+    ],
+  },
 });
