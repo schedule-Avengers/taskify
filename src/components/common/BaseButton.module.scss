@@ -53,7 +53,7 @@
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 374px) {
     width: 138px;
     height: 42px;
     font-size: 14px;
@@ -75,7 +75,7 @@
   &:focus {
     background: #1f115b;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 374px) {
     height: 28px;
     font-size: 12px;
   }
@@ -89,7 +89,7 @@
       background: #666666;
       color: #ffffff;
     }
-    @media (max-width: 375px) {
+    @media (max-width: 374px) {
       width: 52px;
     }
   }
@@ -110,14 +110,6 @@
   &:focus {
     background: #1f115b;
   }
-  @media (max-width: 768px) {
-    height: 28px;
-    font-size: 12px;
-  }
-  @media (max-width: 375px) {
-    height: 28px;
-    font-size: 12px;
-  }
 
   &.btn-decline {
     color: #5534da;
@@ -128,8 +120,73 @@
       background: #666666;
       color: #ffffff;
     }
-    @media (max-width: 375px) {
-      width: 52px;
+  }
+  @media (max-width: 767px) {
+    width: 72px;
+    height: 30px;
+    @media (max-width: 374px) {
+      width: 109px;
+      height: 28px;
+      font-size: 12px;
+    }
+  }
+}
+
+.btn-invite {
+  @extend %btn-base;
+
+  width: 105px;
+  height: 32px;
+  border-radius: 4px;
+  gap: 8px;
+  background: #5534da;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: #1f115b;
+  }
+
+  @media (max-width: 374px) {
+    width: 86px;
+    height: 28px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  & .btn-icon {
+    width: 16px;
+    height: auto;
+    @media (max-width: 374px) {
+      width: 14px;
+      height: auto;
+    }
+  }
+}
+
+.btn-main {
+  @extend %btn-base;
+
+  width: 280px;
+  height: 50px;
+  background: #5534da;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: #1f115b;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 16px;
+    @media (max-width: 374px) {
+      width: 235.2px;
+      height: 42px;
+      font-size: 14px;
     }
   }
 }

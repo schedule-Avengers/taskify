@@ -19,7 +19,10 @@ const BaseButton = ({ text, size, decline, type, onClick }: ButtonProps) => {
       type={type}
       onClick={onClick}
     >
-      {size === 'invite' && <InviteIcon />} {text}
+      {size === 'invite' && (
+        <img src={InviteIcon} alt='InviteIcon' className={cx(`btn-icon`)} />
+      )}
+      {text}
     </button>
   );
 };
