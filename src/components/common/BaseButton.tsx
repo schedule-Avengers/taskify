@@ -1,0 +1,27 @@
+import classNames from 'classnames/bind';
+import styles from './BaseButton.module.scss';
+import InviteIcon from '../../image/ic_invite.svg';
+
+interface ButtonProps {
+  text: string;
+  size: 'lg' | 'md' | 'sm' | 'access' | 'invite' | 'main';
+  type: 'button' | 'submit';
+  decline?: boolean;
+  onClick?: () => void;
+}
+
+const cx = classNames.bind(styles);
+
+const BaseButton = ({ text, size, decline, type, onClick }: ButtonProps) => {
+  return (
+    <button
+      className={cx(`btn-${size}`, { 'btn-decline': decline })}
+      type={type}
+      onClick={onClick}
+    >
+      {size === 'invite' && <InviteIcon />} {text}
+    </button>
+  );
+};
+
+export default BaseButton;
