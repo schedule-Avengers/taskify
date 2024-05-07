@@ -16,16 +16,15 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-      { find: '@', replacement: resolve(__dirname, 'src') },
-      { find: '@axios', replacement: resolve(__dirname, 'src/axios') },
-      {
-        find: '@components',
-        replacement: resolve(__dirname, 'src/components'),
-      },
-      {
-        find: '@pages',
-        replacement: resolve(__dirname, 'src/pages'),
-      },
+      { find: '@', replacement: '/src' },
+      { find: '@axios', replacement: 'src/axios' },
+      { find: '@components', replacement: 'src/components' },
+      { find: '@hooks', replacement: 'src/hooks' },
+      { find: '@pages', replacement: 'src/pages' },
+      { find: '@stores', replacement: 'src/stores' },
+      { find: '@styles', replacement: 'src/styles' },
+      { find: '@types', replacement: 'src/types' },
+      { find: '@utils', replacement: 'src/utils' },
     ],
   },
 });
