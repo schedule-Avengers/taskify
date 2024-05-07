@@ -9,6 +9,7 @@ import MyDashBoard from '@pages/MyDashBoard';
 import DashBoard from '@pages/DashBoard';
 import MyPage from '@pages/MyPage';
 import Layout from '@/pages/Layout';
+import NotFound from '@pages/NotFound';
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <NotFound />,
     //latout outlet줘서 아래는 children에 속하게 됨 모든 하위주소들은 '/'가 포함되어 있다.
     children: [
       {
