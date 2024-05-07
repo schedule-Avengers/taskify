@@ -2,13 +2,14 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import Landing from './pages/landing';
-import SignIn from './pages/signin';
-import SignUp from './pages/siginup';
-import MyDashBoard from './pages/mydashboard';
-import DashBoard from './pages/dashboard';
-import MyPage from './pages/mypage';
-import Layout from './pages/Layout';
+import Landing from '@pages/Landing';
+import SignIn from '@pages/SignIn';
+import SignUp from '@pages/SignUp';
+import MyDashBoard from '@pages/MyDashBoard';
+import DashBoard from '@pages/DashBoard';
+import MyPage from '@pages/MyPage';
+import Layout from '@/pages/Layout';
+
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -29,10 +30,10 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <DashBoard />,
       },
-      //   {
-      //     path: 'dashboard/:dashboard',
-      //     element: <DashBoardDetail />,
-      //   },
+      // {
+      //   path: 'dashboard/:dashboard',
+      //   element: <DashBoardDetail />,
+      // },
       {
         path: 'mypage',
         element: <MyPage />,
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: '/signin',
     element: <SignIn />,
+  },
+  {
+    path: '/signup',
+    element: <SignUp />,
   },
 ]);
 
