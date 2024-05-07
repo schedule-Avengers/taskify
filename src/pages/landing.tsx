@@ -1,3 +1,3 @@
 export default function Landing() {
-  return <div> 렌팅</div>;
+  return <div>랜딩페이지이다.</div>;
 }
