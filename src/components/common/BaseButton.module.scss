@@ -1,0 +1,192 @@
+%btn-base {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  transition: 0.3s;
+  text-align: center;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.btn-access {
+  @extend %btn-base;
+
+  width: 100%;
+  height: 50px;
+  background: #9fa6b2;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: #5534da;
+  }
+}
+
+.btn-lg {
+  @extend %btn-base;
+
+  width: 120px;
+  height: 48px;
+  background: #5534da;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: #1f115b;
+  }
+
+  &.btn-decline {
+    color: #787486;
+    border: 1px solid #d9d9d9;
+    background: #ffffff;
+    &:hover,
+    &:focus {
+      background: #666666;
+      color: #ffffff;
+    }
+  }
+
+  @media (max-width: 374px) {
+    width: 138px;
+    height: 42px;
+    font-size: 14px;
+  }
+}
+
+.btn-md {
+  @extend %btn-base;
+
+  width: 84px;
+  height: 32px;
+  border-radius: 4px;
+  background: #5534da;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: #1f115b;
+  }
+  @media (max-width: 374px) {
+    height: 28px;
+    font-size: 12px;
+  }
+
+  &.btn-decline {
+    color: #5534da;
+    border: 1px solid #d9d9d9;
+    background: #ffffff;
+    &:hover,
+    &:focus {
+      background: #666666;
+      color: #ffffff;
+    }
+    @media (max-width: 374px) {
+      width: 52px;
+    }
+  }
+}
+
+.btn-sm {
+  @extend %btn-base;
+
+  width: 84px;
+  height: 32px;
+  border-radius: 4px;
+  background: #5534da;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: #1f115b;
+  }
+
+  &.btn-decline {
+    color: #5534da;
+    border: 1px solid #d9d9d9;
+    background: #ffffff;
+    &:hover,
+    &:focus {
+      background: #666666;
+      color: #ffffff;
+    }
+  }
+  @media (max-width: 767px) {
+    width: 72px;
+    height: 30px;
+    @media (max-width: 374px) {
+      width: 109px;
+      height: 28px;
+      font-size: 12px;
+    }
+  }
+}
+
+.btn-invite {
+  @extend %btn-base;
+
+  width: 105px;
+  height: 32px;
+  border-radius: 4px;
+  gap: 8px;
+  background: #5534da;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: #1f115b;
+  }
+
+  @media (max-width: 374px) {
+    width: 86px;
+    height: 28px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  & .btn-icon {
+    width: 16px;
+    height: auto;
+    @media (max-width: 374px) {
+      width: 14px;
+      height: auto;
+    }
+  }
+}
+
+.btn-main {
+  @extend %btn-base;
+
+  width: 280px;
+  height: 50px;
+  background: #5534da;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: #1f115b;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 16px;
+    @media (max-width: 374px) {
+      width: 235.2px;
+      height: 42px;
+      font-size: 14px;
+    }
+  }
+}
