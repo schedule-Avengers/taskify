@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     errorElement: <NotFound />,
-    //latout outlet줘서 아래는 children에 속하게 됨 모든 하위주소들은 '/'가 포함되어 있다.
+    //layout outlet줘서 아래는 children에 속하게 됨 모든 하위주소들은 '/'가 포함되어 있다.
     children: [
       {
         path: '',
