@@ -6,7 +6,7 @@ import Landing from '@pages/Landing';
 import SignIn from '@pages/SignIn';
 import SignUp from '@pages/SignUp';
 import MyDashBoard from '@pages/MyDashBoard';
-import DashBoard from '@pages/DashBoard';
+import DashBoard from '@pages/Dashboard';
 import MyPage from '@pages/MyPage';
 import Layout from '@/pages/Layout';
 import NotFound from '@pages/NotFound';
