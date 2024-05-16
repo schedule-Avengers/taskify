@@ -1,3 +1,14 @@
+//로그인 비밀번호 변경
+export interface PostAuthLoginProps {
+  email: 'string';
+  password: 'string';
+}
+
+export interface putAuthPasswordProps {
+  password: 'string';
+  newPassword: 'string';
+}
+
 // 카드목록 조회, 카드 상세조회
 export interface AssigneeProps {
   profileImageUrl: null | string;
@@ -147,4 +158,24 @@ export interface PersonalInfoProps {
   profileImageUrl: null | string;
   createdAt: string;
   updatedAt: string;
+}
+
+//현진추가
+//카드생성
+export interface PostCardProps {
+  assigneeUserId: number;
+  dashboardId: 0;
+  columnId: 0;
+  title: string;
+  description: string;
+  dueDate: string;
+  tags: string[];
+  imageUrl: string;
+}
+
+//카드목록조회
+export interface getCardProps {
+  size: number;
+  cursorId: number;
+  columnId: number;
 }

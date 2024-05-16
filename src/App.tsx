@@ -1,9 +1,5 @@
 function App() {
-  return (
-    <>
-      <div>안녕나는 메인 페이지야</div>
-    </>
-  );
+  return <>안녕안녕나는 메인 페이지야</>;
 }
 
 export default App;
