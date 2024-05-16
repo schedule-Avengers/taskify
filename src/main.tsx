@@ -2,14 +2,14 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import Landing from '@pages/Landing';
-import SignIn from '@pages/SignIn';
-import SignUp from '@pages/SignUp';
-import MyDashBoard from '@pages/MyDashBoard';
-import DashBoard from '@pages/Dashboard';
-import MyPage from '@pages/MyPage';
-import Layout from '@/pages/Layout';
-import NotFound from '@pages/NotFound';
+import Landing from '@pages/landing';
+import SignIn from '@pages/signin';
+import SignUp from '@pages/signup';
+import MyDashBoard from '@pages/mydashboard';
+import DashBoard from '@pages/dashboard';
+import MyPage from '@pages/mypage';
+import Layout from '@pages/layout';
+import NotFound from '@pages/notfound';
 
 const queryClient = new QueryClient();
 

@@ -1,3 +1,3 @@
-export default function MyDashBoard() {
+export default function mydashboard() {
   return <div></div>;
 }
