@@ -1,3 +1,3 @@
-export default function MyPage() {
+export default function mypage() {
   return <div></div>;
 }
