@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import Landing from '@pages/landing';
-import SignIn from '@pages/signin';
-import SignUp from '@pages/signup';
-import MyDashBoard from '@pages/mydashboard';
-import DashBoard from '@pages/dashboard';
-import MyPage from '@pages/mypage';
-import Layout from '@pages/layout';
-import NotFound from '@pages/notfound';
+import Landing from '@/pages/landing';
+import SignIn from '@/pages/signin';
+import SignUp from '@/pages/signup';
+import MyDashBoard from '@/pages/mydashboard';
+import DashBoard from '@/pages/dashboard';
+import MyPage from '@/pages/mypage';
+import Layout from '@/pages/layout';
+import NotFound from '@/pages/notfound';
 
 const router = createBrowserRouter([
   {
