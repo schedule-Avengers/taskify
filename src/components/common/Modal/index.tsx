@@ -10,7 +10,7 @@ interface ModalProps {
 
 const cx = classNames.bind(styles);
 
-const Modal: React.FC<ModalProps> = ({ children, isOpen }) => {
+const index: React.FC<ModalProps> = ({ children, isOpen }) => {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
@@ -21,4 +21,4 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen }) => {
   );
 };
 
-export default Modal;
+export default index;
