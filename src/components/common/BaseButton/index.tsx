@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './BaseButton.module.scss';
-import InviteIcon from '../../image/ic_invite.svg';
+import InviteIcon from '@/assets/svgs/ic_invite.svg';
 
 interface ButtonProps {
   text: string;
@@ -20,7 +20,8 @@ const index = ({ text, size, decline, type, onClick }: ButtonProps) => {
       onClick={onClick}
     >
       {size === 'invite' && (
-        <img src={InviteIcon} alt='InviteIcon' className={cx(`btn-icon`)} />
+        <InviteIcon className={cx(`btn-icon`)} />
+        // <img src={InviteIcon} alt='InviteIcon' className={cx(`btn-icon`)}  />
       )}
       {text}
     </button>
