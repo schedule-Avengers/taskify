@@ -53,6 +53,7 @@
     "typescript": "^5.4.5",
     "vite": "^5.2.0",
     "vite-plugin-next-react-router": "^0.7.1",
+    "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.3.2"
   }
 }
