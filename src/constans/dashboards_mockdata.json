@@ -1,0 +1,96 @@
+{
+  "cursorId": 0,
+  "totalCount": 10,
+  "dashboards": [
+    {
+      "id": 1,
+      "title": "Dashboard 1",
+      "color": "red",
+      "createdAt": "2024-05-20T10:58:17.911Z",
+      "updatedAt": "2024-05-20T12:58:17.911Z",
+      "createdByMe": true,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "Dashboard 2",
+      "color": "blue",
+      "createdAt": "2024-05-19T10:58:17.911Z",
+      "updatedAt": "2024-05-19T12:58:17.911Z",
+      "createdByMe": true,
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "title": "Dashboard 3",
+      "color": "green",
+      "createdAt": "2024-05-18T10:58:17.911Z",
+      "updatedAt": "2024-05-18T12:58:17.911Z",
+      "createdByMe": false,
+      "userId": 3
+    },
+    {
+      "id": 4,
+      "title": "Dashboard 4",
+      "color": "yellow",
+      "createdAt": "2024-05-17T10:58:17.911Z",
+      "updatedAt": "2024-05-17T12:58:17.911Z",
+      "createdByMe": true,
+      "userId": 4
+    },
+    {
+      "id": 5,
+      "title": "Dashboard 5",
+      "color": "purple",
+      "createdAt": "2024-05-16T10:58:17.911Z",
+      "updatedAt": "2024-05-16T12:58:17.911Z",
+      "createdByMe": false,
+      "userId": 5
+    },
+    {
+      "id": 6,
+      "title": "Dashboard 6",
+      "color": "orange",
+      "createdAt": "2024-05-15T10:58:17.911Z",
+      "updatedAt": "2024-05-15T12:58:17.911Z",
+      "createdByMe": true,
+      "userId": 6
+    },
+    {
+      "id": 7,
+      "title": "Dashboard 7",
+      "color": "pink",
+      "createdAt": "2024-05-14T10:58:17.911Z",
+      "updatedAt": "2024-05-14T12:58:17.911Z",
+      "createdByMe": false,
+      "userId": 7
+    },
+    {
+      "id": 8,
+      "title": "Dashboard 8",
+      "color": "brown",
+      "createdAt": "2024-05-13T10:58:17.911Z",
+      "updatedAt": "2024-05-13T12:58:17.911Z",
+      "createdByMe": true,
+      "userId": 8
+    },
+    {
+      "id": 9,
+      "title": "Dashboard 9",
+      "color": "grey",
+      "createdAt": "2024-05-12T10:58:17.911Z",
+      "updatedAt": "2024-05-12T12:58:17.911Z",
+      "createdByMe": false,
+      "userId": 9
+    },
+    {
+      "id": 10,
+      "title": "Dashboard 10",
+      "color": "black",
+      "createdAt": "2024-05-11T10:58:17.911Z",
+      "updatedAt": "2024-05-11T12:58:17.911Z",
+      "createdByMe": true,
+      "userId": 10
+    }
+  ]
+}

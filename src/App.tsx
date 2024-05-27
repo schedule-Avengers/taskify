@@ -6,7 +6,7 @@ import SignUp from '@/pages/signup';
 import MyDashBoard from '@/pages/mydashboard';
 import DashBoard from '@/pages/dashboard';
 import MyPage from '@/pages/mypage';
-import Layout from '@/pages/layout';
+import Layout from '@/pages/Layout';
 import NotFound from '@/pages/notfound';
 
 const router = createBrowserRouter([

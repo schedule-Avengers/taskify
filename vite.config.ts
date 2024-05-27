@@ -10,6 +10,12 @@ export default defineConfig({
     modules: {
       localsConvention: 'camelCase',
     },
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/main.scss";`,
+      },
+      //기본 scss 파일을 main.scss로 설정
+    },
   },
   server: {
     port: 3000,

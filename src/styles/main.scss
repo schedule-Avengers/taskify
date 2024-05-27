@@ -1,0 +1,6 @@
+@import 'global';
+@import 'mixin';
+@import 'variable';
+@import 'motions';
+// _가 붙은 scss 파일들은 규격화된 파일로 불러올때 더 빨라짐. 이 main.scss
+// 파일을 vite.config.ts에서 기본 스타일로 불러옴.
