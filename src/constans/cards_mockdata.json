@@ -1,0 +1,57 @@
+{
+  "cursorId": 0,
+  "totalCount": 3,
+  "cards": [
+    {
+      "id": 0,
+      "title": "Project Alpha",
+      "description": "Initial phase of Project Alpha.",
+      "tags": ["urgent", "important"],
+      "dueDate": "2024-06-30",
+      "assignee": {
+        "profileImageUrl": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "nickname": "alice",
+        "id": 0
+      },
+      "imageUrl": "https://img.freepik.com/free-vector/business-people-working-offices_23-2148466157.jpg?t=st=1718174909~exp=1718178509~hmac=22f911583e8d52c74d3117bf5204e600eb66293cec17bb0438cc40356ff1380b&w=826",
+      "teamId": "teamA",
+      "columnId": 0,
+      "createdAt": "2024-06-06T12:03:37.886Z",
+      "updatedAt": "2024-06-06T12:03:37.886Z"
+    },
+    {
+      "id": 1,
+      "title": "Design Review",
+      "description": "Review the design documents for the new feature.",
+      "tags": ["review", "design"],
+      "dueDate": "2024-07-10",
+      "assignee": {
+        "profileImageUrl": null,
+        "nickname": "bob",
+        "id": 1
+      },
+      "imageUrl": null,
+      "teamId": "teamB",
+      "columnId": 1,
+      "createdAt": "2024-06-07T10:00:00.000Z",
+      "updatedAt": "2024-06-07T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Code Implementation",
+      "description": "Implement the new feature based on the reviewed design.",
+      "tags": ["coding", "feature"],
+      "dueDate": "2024-07-20",
+      "assignee": {
+        "profileImageUrl": "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "nickname": "charlie",
+        "id": 2
+      },
+      "imageUrl": null,
+      "teamId": "teamC",
+      "columnId": 2,
+      "createdAt": "2024-06-08T15:30:00.000Z",
+      "updatedAt": "2024-06-08T15:30:00.000Z"
+    }
+  ]
+}

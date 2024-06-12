@@ -1,14 +1,10 @@
-.main {
+.sidebar {
   display: flex;
-  flex-direction: row;
-  height: 100vh;
-}
-
-.navigator {
-  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
-  border-right: 0.1rem solid $color-gray-30;
   width: 30rem;
+  border-right: 0.1rem solid $color-gray-30;
   transition: $base-transition;
 
   @include tablet {
@@ -77,6 +73,12 @@
   }
 }
 
+.dashboards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
 .dashboard {
   display: flex;
   align-items: center;
@@ -125,8 +127,8 @@
 
 .crown {
   padding-top: 0.3rem;
-  display: flex; /* Flexbox 사용 */
-  align-items: center; /* 수직 중앙 정렬 */
+  display: flex;
+  align-items: center;
   justify-content: center;
   width: 1.8rem;
   height: 1.4rem;
@@ -143,35 +145,35 @@
 }
 
 .circle {
-  width: 8px;
-  height: 8px;
+  width: 0.8rem;
+  height: 0.8rem;
   border-radius: 50%;
 }
 
-.color-1 {
+.green {
   background-color: $color-green;
 }
 
-.color-2 {
+.purple {
   background-color: $color-purple;
 }
 
-.color-3 {
+.orange {
   background-color: $color-orange;
 }
 
-.color-4 {
+.blue {
   background-color: $color-blue-light;
 }
 
-.color-5 {
+.pink {
   background-color: $color-pink;
 }
 
 .offsetButtons {
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: fixed;
   left: 1.2rem;
   bottom: 1.5rem;
 

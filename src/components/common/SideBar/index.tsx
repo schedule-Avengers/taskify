@@ -1,7 +1,6 @@
-import { ReactNode } from 'react';
 import { dashboards } from '@/constans/dashboards_mockdata.json';
 import classNames from 'classnames/bind';
-import styles from './Nav.module.scss';
+import styles from './SideBar.module.scss';
 import LogoWordMark from '@/image/logo-wordmark.svg';
 import LogoIcon from '@/image/logo-icon.svg';
 import IconAddBox from '@/image/ic-addbox.svg';
@@ -11,15 +10,10 @@ import { Link, NavLink } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-const getColorClass = (id: number) => {
-  const colorIndex = (id % 5) + 1;
-  return `color-${colorIndex}`;
-};
-
-const Nav: React.FC<{ children: ReactNode }> = ({ children }) => {
+const SideBar: React.FC = () => {
   return (
-    <div className={cx('main')}>
-      <div className={cx('navigator')}>
+    <div className={cx('sidebar')}>
+      <div>
         <Link to='/' className={cx('logo')}>
           <img src={LogoIcon} className={cx('logo-icon')} alt='logo-icon' />
           <img
@@ -47,9 +41,7 @@ const Nav: React.FC<{ children: ReactNode }> = ({ children }) => {
                   })
                 }
               >
-                <div
-                  className={cx('circle', getColorClass(dashboard.id))}
-                ></div>
+                <div className={cx('circle', dashboard.color)}></div>
                 <div className={cx('dashboard-title')}>
                   {dashboard.title}
                   <img
@@ -64,18 +56,17 @@ const Nav: React.FC<{ children: ReactNode }> = ({ children }) => {
             </li>
           ))}
         </ul>
-        <div className={cx('offsetButtons')}>
-          <div className={cx('arrowButton', 'left')}>
-            <img src={IconArrow} className={cx('arrow')} alt='leftArrow' />
-          </div>
-          <div className={cx('arrowButton', 'right')}>
-            <img src={IconArrow} className={cx('arrow')} alt='rightArrow' />
-          </div>
+      </div>
+      <div className={cx('offsetButtons')}>
+        <div className={cx('arrowButton', 'left')}>
+          <img src={IconArrow} className={cx('arrow')} alt='leftArrow' />
+        </div>
+        <div className={cx('arrowButton', 'right')}>
+          <img src={IconArrow} className={cx('arrow')} alt='rightArrow' />
         </div>
       </div>
-      {children}
     </div>
   );
 };
 
-export default Nav;
+export default SideBar;

@@ -5,7 +5,7 @@
     {
       "id": 1,
       "title": "Dashboard 1",
-      "color": "red",
+      "color": "green",
       "createdAt": "2024-05-20T10:58:17.911Z",
       "updatedAt": "2024-05-20T12:58:17.911Z",
       "createdByMe": true,
@@ -32,7 +32,7 @@
     {
       "id": 4,
       "title": "Dashboard 4",
-      "color": "yellow",
+      "color": "purple",
       "createdAt": "2024-05-17T10:58:17.911Z",
       "updatedAt": "2024-05-17T12:58:17.911Z",
       "createdByMe": true,
@@ -68,7 +68,7 @@
     {
       "id": 8,
       "title": "Dashboard 8",
-      "color": "brown",
+      "color": "green",
       "createdAt": "2024-05-13T10:58:17.911Z",
       "updatedAt": "2024-05-13T12:58:17.911Z",
       "createdByMe": true,
@@ -77,7 +77,7 @@
     {
       "id": 9,
       "title": "Dashboard 9",
-      "color": "grey",
+      "color": "purple",
       "createdAt": "2024-05-12T10:58:17.911Z",
       "updatedAt": "2024-05-12T12:58:17.911Z",
       "createdByMe": false,
@@ -86,7 +86,7 @@
     {
       "id": 10,
       "title": "Dashboard 10",
-      "color": "black",
+      "color": "blue",
       "createdAt": "2024-05-11T10:58:17.911Z",
       "updatedAt": "2024-05-11T12:58:17.911Z",
       "createdByMe": true,

@@ -1,0 +1,26 @@
+{
+  "result": "SUCCESS",
+  "data": [
+    {
+      "id": 0,
+      "title": "Project Alpha",
+      "teamId": "team-123",
+      "createdAt": "2024-01-15T09:30:00.000Z",
+      "updatedAt": "2024-01-20T10:00:00.000Z"
+    },
+    {
+      "id": 1,
+      "title": "Project Beta",
+      "teamId": "team-456",
+      "createdAt": "2024-02-10T11:45:00.000Z",
+      "updatedAt": "2024-02-15T12:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Project Gamma",
+      "teamId": "team-789",
+      "createdAt": "2024-03-20T14:00:00.000Z",
+      "updatedAt": "2024-03-25T15:30:00.000Z"
+    }
+  ]
+}
