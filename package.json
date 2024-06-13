@@ -21,6 +21,7 @@
     ]
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.4.2",
     "@tanstack/react-query": "^5.31.0",
     "@tanstack/react-query-devtools": "^5.31.0",
     "axios": "^1.6.8",
@@ -29,7 +30,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.3",
     "react-router-dom": "^6.23.0",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.2",
@@ -55,6 +57,7 @@
     "typescript": "^5.4.5",
     "vite": "^5.2.0",
     "vite-plugin-next-react-router": "^0.7.1",
+    "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.3.2"
   }
 }
