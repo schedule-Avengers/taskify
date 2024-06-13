@@ -9,6 +9,13 @@
   padding: 0;
   margin: 0;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -16,6 +23,7 @@ body {
   line-height: none;
   box-sizing: border-box;
   font-family: 'Pretendard-Regular';
+  margin: 0;
 }
 ul,
 ol,

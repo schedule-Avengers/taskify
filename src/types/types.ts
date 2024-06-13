@@ -23,7 +23,7 @@ export interface CardProps {
   tags: string[];
   dueDate: string;
   assignee: AssigneeProps;
-  imageUrl: string;
+  imageUrl: null | string;
   teamId: string;
   columnId: number;
   createdAt: string;

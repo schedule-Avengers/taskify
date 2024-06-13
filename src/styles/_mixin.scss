@@ -1,5 +1,3 @@
-@import './variables';
-
 @mixin tablet {
   @media (max-width: $breakpoint-tablet) {
     @content;

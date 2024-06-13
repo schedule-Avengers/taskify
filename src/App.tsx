@@ -5,9 +5,10 @@ import SignIn from '@/pages/signin';
 import SignUp from '@/pages/signup';
 import MyDashBoard from '@/pages/mydashboard';
 import DashBoard from '@/pages/dashboard';
+import DashBoardDetail from '@/components/dashboard/DashBoardDetail';
 import MyPage from '@/pages/mypage';
-import Layout from '@/pages/layout';
-import NotFound from '@/pages/notfound';
+import Layout from '@/pages/Layout';
+import NotFound from '@/pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -28,13 +29,18 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <DashBoard />,
       },
-      // {
-      //   path: 'dashboard/:dashboard',
-      //   element: <DashBoardDetail />,
-      // },
       {
-        path: 'mypage',
-        element: <MyPage />,
+        path: 'dashboard',
+        children: [
+          {
+            path: '',
+            element: <DashBoard />,
+          },
+          {
+            path: ':dashboard',
+            element: <DashBoardDetail />,
+          },
+        ],
       },
     ],
   },
