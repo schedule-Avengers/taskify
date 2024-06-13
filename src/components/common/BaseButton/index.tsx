@@ -12,7 +12,7 @@ interface ButtonProps {
 
 const cx = classNames.bind(styles);
 
-const index = ({ text, size, decline, type, onClick }: ButtonProps) => {
+const BaseButton = ({ text, size, decline, type, onClick }: ButtonProps) => {
   return (
     <button
       className={cx(`btn-${size}`, { 'btn-decline': decline })}
@@ -28,4 +28,4 @@ const index = ({ text, size, decline, type, onClick }: ButtonProps) => {
   );
 };
 
-export default index;
+export default BaseButton;

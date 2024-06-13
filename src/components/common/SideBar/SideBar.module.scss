@@ -1,0 +1,203 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 30rem;
+  border-right: 0.1rem solid $color-gray-30;
+  transition: $base-transition;
+
+  @include tablet {
+    width: 16rem;
+
+    @include mobile {
+      width: 6.7rem;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 2.4rem;
+  margin-bottom: 6rem;
+
+  @include tablet {
+    justify-content: center;
+    margin-top: 0.9rem;
+    margin-left: 0;
+    @include mobile {
+      margin-bottom: 3.8rem;
+    }
+  }
+
+  &-wordmark {
+    @include mobile {
+      display: none;
+    }
+  }
+}
+
+.addDashboards {
+  height: 2.4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 2.4rem 1.5rem 2.4rem;
+  @include tablet {
+    gap: 2.4rem;
+    @include mobile {
+      margin-bottom: 2.2rem;
+      &-title {
+        display: none;
+      }
+    }
+  }
+
+  &-title {
+    color: $color-gray-50;
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  &-addBox {
+    &.active,
+    &:hover {
+      border-radius: 0.2rem;
+      background-color: $color-violet-light;
+      color: $color-black-20;
+    }
+  }
+}
+
+.dashboards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.dashboard {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+  padding-left: 1.2rem;
+  height: 4.5rem;
+  border-radius: 0.4rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: $color-gray-50;
+
+  &.active,
+  &:hover {
+    background-color: $color-violet-light;
+    color: $color-black-20;
+  }
+  @include tablet {
+    font-size: 1.6rem;
+    @include mobile {
+      justify-content: center;
+      padding-left: 0;
+
+      &-title {
+        display: none;
+      }
+    }
+  }
+}
+
+.dashboard-title {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 0.6rem;
+
+  @include tablet {
+    white-space: wrap;
+
+    gap: 0.4rem;
+    @include mobile {
+      display: none;
+    }
+  }
+}
+
+.crown {
+  padding-top: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.4rem;
+
+  @include tablet {
+    padding-top: 0.2rem;
+    width: 1.5rem;
+    height: 1.2rem;
+  }
+
+  &.notCreatedByMe {
+    display: none;
+  }
+}
+
+.circle {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+}
+
+.green {
+  background-color: $color-green;
+}
+
+.purple {
+  background-color: $color-purple;
+}
+
+.orange {
+  background-color: $color-orange;
+}
+
+.blue {
+  background-color: $color-blue-light;
+}
+
+.pink {
+  background-color: $color-pink;
+}
+
+.offsetButtons {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  left: 1.2rem;
+  bottom: 1.5rem;
+
+  @include tablet {
+    bottom: 2.6rem;
+    @include mobile {
+      display: none;
+    }
+  }
+}
+.arrowButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0 0.4rem 0.4rem 0;
+  border: 0.1rem solid $color-gray-30;
+  background: $color-gray-10;
+
+  &.left {
+    transform: scaleX(-1);
+  }
+}
