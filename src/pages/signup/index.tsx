@@ -9,7 +9,7 @@ import { useEffect, useRef } from 'react';
 //@TODO:
 //1. react-hook-form 변경 ✅
 //2. UI 작업 ✅
-//3.기본 텍스트 1.6rem 설정하기
+//3.기본 텍스트 1.6rem 설정하기✅
 //4. 유효성검사 동적으로 반응할수 있도록 작업하기
 //5. 기능 넣기
 //6. 반응형 작업
