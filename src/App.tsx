@@ -6,21 +6,22 @@ import SignUp from '@/pages/signup';
 import MyDashBoard from '@/pages/mydashboard';
 import DashBoard from '@/pages/dashboard';
 import DashBoardDetail from '@/components/dashboard/DashBoardDetail';
-import MyPage from '@/pages/mypage';
+import MyPage from '@pages/MyPage';
 import Layout from '@/pages/Layout';
 import NotFound from '@/pages/NotFound';
 
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <Landing />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: '/',
     element: <Layout />,
     errorElement: <NotFound />,
-    //layout outlet줘서 아래는 children에 속하게 됨 모든 하위주소들은 '/'가 포함되어 있다.
+    // Layout 컴포넌트에 속하는 경로들을 children으로 설정
     children: [
-      {
-        path: '',
-        element: <Landing />,
-      },
       {
         path: 'mydashboard',
         element: <MyDashBoard />,
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <DashBoard />,
+      },
+      {
+        path: 'mypage',
+        element: <MyPage />,
       },
       {
         path: 'dashboard',
@@ -44,7 +49,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  //layout에 속하지 않는 라우터 설정
+  // Layout에 속하지 않는 라우터 설정
   {
     path: '/signin',
     element: <SignIn />,
