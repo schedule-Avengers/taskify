@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 type PasswordFormData = {
   currentPassword: string;
   newPassword: string;
-  confirmPassword: string; // confirmPassword 필드 추가
+  confirmPassword: string;
 };
 
 const PasswordChangeForm: React.FC = () => {

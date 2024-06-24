@@ -4,7 +4,11 @@
   padding: 2rem;
   gap: 2.4rem;
   transition: $base-transition;
-  overflow: scroll;
+  overflow-y: auto;
+
+  @include mobile {
+    padding: 1.7rem 1.2rem;
+  }
 }
 
 .goback {
