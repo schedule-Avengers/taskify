@@ -6,6 +6,8 @@
   width: 30rem;
   border-right: 0.1rem solid $color-gray-30;
   transition: $base-transition;
+  flex-shrink: 0;
+  overflow: hidden;
 
   @include tablet {
     width: 16rem;
@@ -13,6 +15,10 @@
     @include mobile {
       width: 6.7rem;
     }
+  }
+
+  &-body {
+    width: 100%;
   }
 }
 
