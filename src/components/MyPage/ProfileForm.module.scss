@@ -3,17 +3,26 @@
   flex-direction: column;
   gap: 3.2rem;
   width: 62rem;
-  height: 35.5rem;
+  height: 100%;
   border-radius: 0.8rem;
   background: $color-white;
-  padding: 2.4rem;
+  padding: 2.8rem;
+  transition: $base-transition;
 
+  @include tablet {
+    width: 100%;
+  }
+  @include mobile {
+    gap: 2.6rem;
+    padding: 2rem;
+  }
   & h2 {
     padding-top: 0.4rem;
     font-size: 2.4rem;
     font-weight: 700;
     @include mobile {
       font-size: 2rem;
+      padding-top: 0.8rem;
     }
   }
 }
@@ -22,6 +31,10 @@
   display: flex;
   flex-direction: row;
   gap: 1.6rem;
+  @include mobile {
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
 
 .emailandnickname {
@@ -60,6 +73,11 @@
   border-radius: 0.6rem;
   flex-shrink: 0;
   position: relative;
+  @include mobile {
+    width: 10rem;
+    height: 10rem;
+  }
+
   &:hover {
     cursor: pointer;
     background-color: $color-gray-30;
@@ -84,6 +102,10 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.error-message {
+  color: $color-red;
 }
 
 .submitbutton {

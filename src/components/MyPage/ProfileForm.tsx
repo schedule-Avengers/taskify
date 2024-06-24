@@ -97,7 +97,9 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ originalNickname }) => {
               )}
             </label>
             {errors.profilePicture && (
-              <span>{getErrorMessage(errors.profilePicture)}</span>
+              <span className={cx('error-message')}>
+                {getErrorMessage(errors.profilePicture)}
+              </span>
             )}
           </div>
           <div className={cx('emailandnickname')}>
@@ -122,7 +124,11 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ originalNickname }) => {
                 })}
               />
             </div>
-            {errors.nickname && <span>{getErrorMessage(errors.nickname)}</span>}
+            {errors.nickname && (
+              <span className={cx('error-message')}>
+                {getErrorMessage(errors.nickname)}
+              </span>
+            )}
           </div>
         </div>
         <div className={cx('submitbutton')}>
