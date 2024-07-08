@@ -1,56 +1,73 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'react-router-dom';
-import Logo from '@/assets/svgs/logo.svg?react';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from '@hooks/validationSchema';
-import styled from './signup.module.scss';
-import { useEffect, useRef } from 'react';
+import { postAuthSignUp } from '@/axios/api';
+import styled from '@/pages/signup/signup.module.scss';
+import Logo from '@/assets/svgs/logo.svg?react';
+import Modal from '@/components/common/Modal/index';
 
+//input에서 focus 빼면 유효성 검사 시작 input에 다시 focus 두면 에러메세지 없어진다.
 //@TODO:
-//1. react-hook-form 변경 ✅
-//2. UI 작업 ✅
-//3.기본 텍스트 1.6rem 설정하기✅
-//4. 유효성검사 동적으로 반응할수 있도록 작업하기
-//5. 기능 넣기
+//유효성 검사에 성공하면 button able✅
+//email 유저가 있는지 확인하기
 //6. 반응형 작업
 
+//로그인페이지 만들어주기 -api 연결
+
 //추가작업
+//로딩 처리 해주기
 //input 공동 컴포 만들기
+//axios에 대한 공부
+//회원가입 여러 방식에 대한 공부
 
 interface Inputs {
   email: string;
   nickname: string;
   password: string;
   passwordConfirm: string;
+  checkbox: boolean;
 }
 
 export default function index() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalMessage, setModalMessage] = useState<string>('');
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isValid },
+    //폼의 유효성 검사를 나타내는 속성
+    trigger,
+    clearErrors,
   } = useForm<Inputs>({
     resolver: yupResolver(validationSchema),
+    // mode: 'onBlur',
   });
 
-  const emailRef = useRef<HTMLInputElement | null>(null);
-  const nicknameRef = useRef<HTMLInputElement | null>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
-  const passwordConfirmRef = useRef<HTMLInputElement | null>(null);
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
   useEffect(() => {
-    if (errors.email) {
-      emailRef.current?.focus();
-    } else if (errors.nickname) {
-      nicknameRef.current?.focus();
-    } else if (errors.password) {
-      passwordRef.current?.focus();
-    } else if (errors.passwordConfirm) {
-      passwordConfirmRef.current?.focus();
+    setIsFormValid(isValid);
+  }, [isValid]);
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    console.log(data);
+    try {
+      const response = await postAuthSignUp(data);
+      setModalMessage('회원가입에 성공했습니다!');
+      setIsModalOpen(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        navigate('/signin');
+      }, 3000);
+    } catch (error) {
+      console.error('회원가입 실패:', error);
+      setModalMessage('회원가입에 실패했습니다. 다시 시도해주세요.');
+      setIsModalOpen(true);
     }
-  }, [errors]);
+  };
 
   return (
     <div className={styled.bg}>
@@ -72,7 +89,8 @@ export default function index() {
             type='text'
             className={`${styled.formInput} ${errors.email ? styled.error : ''}`}
             {...register('email')}
-            ref={emailRef}
+            onBlur={() => trigger('email')}
+            onFocus={() => clearErrors('email')}
           />
           {errors.email && (
             <span className={styled.errorMessage}>{errors.email.message}</span>
@@ -86,7 +104,8 @@ export default function index() {
             type='text'
             className={`${styled.formInput} ${errors.nickname ? styled.error : ''}`}
             {...register('nickname')}
-            ref={nicknameRef}
+            onBlur={() => trigger('nickname')}
+            onFocus={() => clearErrors('nickname')}
           />
           {errors.nickname && (
             <span className={styled.errorMessage}>
@@ -99,7 +118,8 @@ export default function index() {
             type='password'
             className={`${styled.formInput} ${errors.password ? styled.error : ''}`}
             {...register('password')}
-            ref={passwordRef}
+            onBlur={() => trigger('password')}
+            onFocus={() => clearErrors('password')}
           />
           {errors.password && (
             <span className={styled.errorMessage}>
@@ -112,7 +132,8 @@ export default function index() {
             type='password'
             className={`${styled.formInput} ${errors.passwordConfirm ? styled.error : ''}`}
             {...register('passwordConfirm')}
-            ref={passwordConfirmRef}
+            onBlur={() => trigger('passwordConfirm')}
+            onFocus={() => clearErrors('passwordConfirm')}
           />
           {errors.passwordConfirm && (
             <span className={styled.errorMessage}>
@@ -124,10 +145,23 @@ export default function index() {
               type='checkbox'
               id='checkbox'
               className={styled.agreeCheckbox}
+              {...register('checkbox')}
+              onBlur={() => trigger('checkbox')}
+              onFocus={() => clearErrors('checkbox')}
             />
             <label htmlFor='checkbox'>이용약관에 동의합니다.</label>
           </div>
-          <button className={styled.submitButton} disabled={isSubmitting}>
+          {/* {errors.checkbox && (
+            <span className={styled.errorMessage}>
+              {errors.checkbox.message}
+            </span>
+          )} */}
+          <button
+            type='submit'
+            className={`${styled.submitButton} ${isFormValid ? '' : styled.disabled}`}
+            disabled={isFormValid || isSubmitting}
+            // 둘다 false가 되야지만 disabled가 되지 않는거맞아?
+          >
             가입하기
           </button>
         </form>
@@ -136,6 +170,7 @@ export default function index() {
           <Link to='/signin'>로그인하기</Link>
         </div>
       </main>
+      {isModalOpen && <Modal isOpen={isModalOpen}>{modalMessage}</Modal>}
     </div>
   );
 }
