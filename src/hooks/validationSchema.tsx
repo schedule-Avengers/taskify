@@ -11,9 +11,9 @@ export const validationSchema = yup.object().shape({
   nickname: yup
     .string()
     .min(3, '닉네임은 3글자 이상이여야 합니다.')
-    .max(10, '닉네임은 8글자 이하여야 합니다.')
+    .max(8, '닉네임은 8글자 이하여야 합니다.')
     .matches(/^[a-z0-9]+$/, '닉네임은 알파벳 소문자와 숫자만 포함해야 합니다.')
-    .required('닉네임은 필수항목입니다. '),
+    .required('닉네임은 필수항목입니다.'),
   password: yup
     .string()
     .min(8, '8자 이상의 비밀번호를 입력해 주세요')
@@ -29,4 +29,8 @@ export const validationSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref('password')], '비밀번호가 일치하지 않습니다.')
     .required('비밀번호를 다시 입력해 주세요'),
+  checkbox: yup
+    .boolean()
+    .oneOf([true], '이용약관에 동의해야 합니다.')
+    .required('이용약관은 필수항목입니다.'),
 });
