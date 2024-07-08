@@ -1,0 +1,53 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 2.4rem;
+  transition: $base-transition;
+  overflow-y: auto;
+
+  @include mobile {
+    padding: 1.7rem 1.2rem;
+  }
+}
+
+.goback {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: transparent;
+  border: none;
+  gap: 0.6rem;
+
+  &-button {
+    width: 2rem;
+    height: 2rem;
+
+    @include mobile {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+  &-word {
+    font-size: 1.6rem;
+    font-weight: 500;
+
+    @include mobile {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.input-password {
+  width: 62rem;
+  height: 45.4rem;
+  flex-shrink: 0;
+  border-radius: 0.8rem;
+  background: $color-white;
+}

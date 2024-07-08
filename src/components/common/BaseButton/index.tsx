@@ -12,7 +12,13 @@ interface ButtonProps {
 
 const cx = classNames.bind(styles);
 
-const BaseButton = ({ text, size, decline, type, onClick }: ButtonProps) => {
+const BaseButton: React.FC<ButtonProps> = ({
+  text,
+  size,
+  decline,
+  type,
+  onClick,
+}) => {
   return (
     <button
       className={cx(`btn-${size}`, { 'btn-decline': decline })}

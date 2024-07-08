@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 const SideBar: React.FC = () => {
   return (
     <div className={cx('sidebar')}>
-      <div>
+      <div className={cx('sidebar-body')}>
         <Link to='/' className={cx('logo')}>
           <img src={LogoIcon} className={cx('logo-icon')} alt='logo-icon' />
           <img
