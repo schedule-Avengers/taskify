@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const validationSchema = yup.object().shape({
+export const signupValidationSchema = yup.object().shape({
   email: yup
     .string()
     .matches(
@@ -33,4 +33,25 @@ export const validationSchema = yup.object().shape({
     .boolean()
     .oneOf([true], '이용약관에 동의해야 합니다.')
     .required('이용약관은 필수항목입니다.'),
+});
+
+export const signinValidationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .matches(
+      /^\w+([.-]?\w+)@\w+([.-]?\w+)(\.\w{2,3})+$/,
+      '올바른 이메일 형식을 입력하세요',
+    )
+    .required('이메일은 필수항목입니다.'),
+  password: yup
+    .string()
+    .min(8, '8자 이상의 비밀번호를 입력해 주세요')
+    .max(20, '20자 이하의 비밀번호를 입력해 주세요')
+    .matches(/[a-zA-Z]/, '비밀번호에는 1개 이상의 영어가 포함되어야 합니다.')
+    .matches(/\d/, '비밀번호에는 1개 이상의 숫자가 포함되어야 합니다.')
+    .matches(
+      /[!@#$%^&*()_+]/,
+      '비밀번호에는 1개 이상의 특수문자가 포함되어야 합니다.',
+    )
+    .required('비밀번호는 필수항목입니다.'),
 });
