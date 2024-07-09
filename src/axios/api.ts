@@ -22,7 +22,7 @@ export async function PostAuthSignIn({ email, password }: PostAuthSignInProps) {
     email,
     password,
   });
-  return res;
+  return res.data;
 }
 
 export async function putAuthPassword({
