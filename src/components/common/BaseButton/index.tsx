@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import styles from './BaseButton.module.scss';
+import styles from './baseButton.module.scss';
 import InviteIcon from '@/assets/svgs/ic_invite.svg';
 
 interface ButtonProps {
