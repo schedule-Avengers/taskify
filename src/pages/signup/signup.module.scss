@@ -95,3 +95,14 @@
 .isSignUp {
   margin-right: 5px;
 }
+
+.goSignup {
+  color: #5634da;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #5634da; /* 밑줄의 색상 */
+  }
+}

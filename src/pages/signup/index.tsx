@@ -2,25 +2,15 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { validationSchema } from '@hooks/validationSchema';
+import { signupValidationSchema } from '@hooks/validationSchema';
 import { postAuthSignUp } from '@/axios/api';
-import styled from '@/pages/signup/signup.module.scss';
+import classNames from 'classnames/bind';
+import styles from '@/pages/signup/signup.module.scss';
 import Logo from '@/assets/svgs/logo.svg?react';
 import Modal from '@/components/common/Modal/index';
+import { AxiosError } from 'axios';
 
-//input에서 focus 빼면 유효성 검사 시작 input에 다시 focus 두면 에러메세지 없어진다.
-//@TODO:
-//유효성 검사에 성공하면 button able✅
-//email 유저가 있는지 확인하기
-//6. 반응형 작업
-
-//로그인페이지 만들어주기 -api 연결
-
-//추가작업
-//로딩 처리 해주기
-//input 공동 컴포 만들기
-//axios에 대한 공부
-//회원가입 여러 방식에 대한 공부
+const cx = classNames.bind(styles);
 
 interface Inputs {
   email: string;
@@ -40,12 +30,10 @@ export default function index() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isValid },
-    //폼의 유효성 검사를 나타내는 속성
     trigger,
     clearErrors,
   } = useForm<Inputs>({
-    resolver: yupResolver(validationSchema),
-    // mode: 'onBlur',
+    resolver: yupResolver(signupValidationSchema),
   });
 
   useEffect(() => {
@@ -53,32 +41,33 @@ export default function index() {
   }, [isValid]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data);
     try {
       const response = await postAuthSignUp(data);
-      setModalMessage('회원가입에 성공했습니다!');
+      setModalMessage('가입이 완료되었습니다!');
       setIsModalOpen(true);
       setTimeout(() => {
         setIsModalOpen(false);
         navigate('/signin');
       }, 3000);
     } catch (error) {
-      console.error('회원가입 실패:', error);
-      setModalMessage('회원가입에 실패했습니다. 다시 시도해주세요.');
-      setIsModalOpen(true);
+      if (error instanceof AxiosError) {
+        const signUpFailureMessage = error.response?.data.message;
+        setModalMessage(signUpFailureMessage);
+        setIsModalOpen(true);
+      }
     }
   };
 
   return (
-    <div className={styled.bg}>
-      <main className={styled.main}>
-        <div className={styled.mainTop}>
-          <Logo className={styled.logoImg} />
-          <p className={styled.mainTopText}>첫 방문을 환영합니다!</p>
+    <div className={cx('bg')}>
+      <main className={cx('main')}>
+        <div className={cx('mainTop')}>
+          <Logo className={cx('logoImg')} />
+          <p className={cx('mainTopText')}>첫 방문을 환영합니다!</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label
-            className={`${styled.formLabel} ${styled.formLabelEmail}`}
+            className={`${cx('formLabel')} ${cx('formLabelEmail')}`}
             htmlFor='email'
           >
             이메일
@@ -87,87 +76,88 @@ export default function index() {
             id='email'
             placeholder='이메일을 입력해주세요'
             type='text'
-            className={`${styled.formInput} ${errors.email ? styled.error : ''}`}
+            className={`${cx('formInput')} ${errors.email ? cx('error') : ''}`}
             {...register('email')}
             onBlur={() => trigger('email')}
             onFocus={() => clearErrors('email')}
           />
           {errors.email && (
-            <span className={styled.errorMessage}>{errors.email.message}</span>
+            <span className={cx('errorMessage')}>{errors.email.message}</span>
           )}
-          <label className={styled.formLabel} htmlFor='nickname'>
+          <label className={cx('formLabel')} htmlFor='nickname'>
             닉네임
           </label>
           <input
             id='nickname'
             placeholder='닉네임을 입력해 주세요'
             type='text'
-            className={`${styled.formInput} ${errors.nickname ? styled.error : ''}`}
+            className={`${cx('formInput')} ${errors.nickname ? cx('error') : ''}`}
             {...register('nickname')}
             onBlur={() => trigger('nickname')}
             onFocus={() => clearErrors('nickname')}
           />
           {errors.nickname && (
-            <span className={styled.errorMessage}>
+            <span className={cx('errorMessage')}>
               {errors.nickname.message}
             </span>
           )}
-          <label className={styled.formLabel}>비밀번호</label>
+          <label className={cx('formLabel')}>비밀번호</label>
           <input
             placeholder='8자 이상 입력해 주세요'
             type='password'
-            className={`${styled.formInput} ${errors.password ? styled.error : ''}`}
+            className={`${cx('formInput')} ${errors.password ? cx('error') : ''}`}
             {...register('password')}
             onBlur={() => trigger('password')}
             onFocus={() => clearErrors('password')}
           />
           {errors.password && (
-            <span className={styled.errorMessage}>
+            <span className={cx('errorMessage')}>
               {errors.password.message}
             </span>
           )}
-          <label className={styled.formLabel}>비밀번호 확인</label>
+          <label className={cx('formLabel')}>비밀번호 확인</label>
           <input
             placeholder='비밀번호를 한번 더 입력해 주세요'
             type='password'
-            className={`${styled.formInput} ${errors.passwordConfirm ? styled.error : ''}`}
+            className={`${cx('formInput')} ${errors.passwordConfirm ? cx('error') : ''}`}
             {...register('passwordConfirm')}
             onBlur={() => trigger('passwordConfirm')}
             onFocus={() => clearErrors('passwordConfirm')}
           />
           {errors.passwordConfirm && (
-            <span className={styled.errorMessage}>
+            <span className={cx('errorMessage')}>
               {errors.passwordConfirm.message}
             </span>
           )}
-          <div className={styled.agreeContent}>
+          <div className={cx('agreeContent')}>
             <input
               type='checkbox'
               id='checkbox'
-              className={styled.agreeCheckbox}
+              className={cx('agreeCheckbox')}
               {...register('checkbox')}
               onBlur={() => trigger('checkbox')}
               onFocus={() => clearErrors('checkbox')}
             />
             <label htmlFor='checkbox'>이용약관에 동의합니다.</label>
           </div>
-          {/* {errors.checkbox && (
-            <span className={styled.errorMessage}>
+          {errors.checkbox && (
+            <span className={cx('errorMessage')}>
               {errors.checkbox.message}
             </span>
-          )} */}
+          )}
           <button
             type='submit'
-            className={`${styled.submitButton} ${isFormValid ? '' : styled.disabled}`}
-            disabled={isFormValid || isSubmitting}
-            // 둘다 false가 되야지만 disabled가 되지 않는거맞아?
+            className={`${cx('submitButton')} ${isFormValid ? '' : cx('disabled')}`}
+            disabled={!isFormValid || isSubmitting}
           >
             가입하기
           </button>
         </form>
-        <div className={styled.goSignUpContent}>
-          <p className={styled.isSignUp}>이미 가입하셨나요?</p>
-          <Link to='/signin'>로그인하기</Link>
+        <div className={cx('goSignUpContent')}>
+          <p className={cx('isSignUp')}>이미 가입하셨나요?</p>
+          <Link to='/signin' className={cx('goSignup')}>
+            로그인하기
+          </Link>
         </div>
       </main>
       {isModalOpen && <Modal isOpen={isModalOpen}>{modalMessage}</Modal>}
