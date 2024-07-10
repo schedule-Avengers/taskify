@@ -1,12 +1,19 @@
+//회원가입
+export interface postAuthSignUpProps {
+  email: string;
+  nickname: string;
+  password: string;
+}
+
 //로그인 비밀번호 변경
-export interface PostAuthLoginProps {
-  email: 'string';
-  password: 'string';
+export interface PostAuthSignInProps {
+  email: string;
+  password: string;
 }
 
 export interface putAuthPasswordProps {
-  password: 'string';
-  newPassword: 'string';
+  password: string;
+  newPassword: string;
 }
 
 // 카드목록 조회, 카드 상세조회
@@ -178,4 +185,13 @@ export interface getCardProps {
   size: number;
   cursorId: number;
   columnId: number;
+}
+
+export interface UserInfo {
+  id: number;
+  email: string;
+  nickname: string;
+  profileImageUrl: null | string;
+  createdAt: string;
+  updatedAt: string;
 }
