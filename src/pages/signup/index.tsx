@@ -9,6 +9,8 @@ import styles from '@/pages/signup/signup.module.scss';
 import Logo from '@/assets/svgs/logo.svg?react';
 import Modal from '@/components/common/Modal/index';
 import { AxiosError } from 'axios';
+import BaseButton from '@components/common/BaseButton';
+import AuthInput from '@/components/common/Input/AuthInput';
 
 const cx = classNames.bind(styles);
 
@@ -66,69 +68,59 @@ export default function index() {
           <p className={cx('mainTopText')}>첫 방문을 환영합니다!</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label
-            className={`${cx('formLabel')} ${cx('formLabelEmail')}`}
-            htmlFor='email'
-          >
+          <label className={cx('formLabel')} htmlFor='email'>
             이메일
           </label>
-          <input
+          <AuthInput
             id='email'
-            placeholder='이메일을 입력해주세요'
+            placeholder='이메일을 입력해 주세요'
             type='text'
-            className={`${cx('formInput')} ${errors.email ? cx('error') : ''}`}
-            {...register('email')}
-            onBlur={() => trigger('email')}
-            onFocus={() => clearErrors('email')}
+            trigger={trigger}
+            clearErrors={clearErrors}
+            register={register}
+            name='email'
+            errorMessage={errors.email?.message}
           />
-          {errors.email && (
-            <span className={cx('errorMessage')}>{errors.email.message}</span>
-          )}
           <label className={cx('formLabel')} htmlFor='nickname'>
             닉네임
           </label>
-          <input
+          <AuthInput
             id='nickname'
             placeholder='닉네임을 입력해 주세요'
             type='text'
-            className={`${cx('formInput')} ${errors.nickname ? cx('error') : ''}`}
             {...register('nickname')}
-            onBlur={() => trigger('nickname')}
-            onFocus={() => clearErrors('nickname')}
+            trigger={trigger}
+            clearErrors={clearErrors}
+            register={register}
+            name='nickname'
+            errorMessage={errors.nickname?.message}
           />
-          {errors.nickname && (
-            <span className={cx('errorMessage')}>
-              {errors.nickname.message}
-            </span>
-          )}
-          <label className={cx('formLabel')}>비밀번호</label>
-          <input
+          <label className={cx('formLabel')} htmlFor='password'>
+            비밀번호
+          </label>
+          <AuthInput
+            id='password'
             placeholder='8자 이상 입력해 주세요'
             type='password'
-            className={`${cx('formInput')} ${errors.password ? cx('error') : ''}`}
-            {...register('password')}
-            onBlur={() => trigger('password')}
-            onFocus={() => clearErrors('password')}
+            trigger={trigger}
+            clearErrors={clearErrors}
+            register={register}
+            name='password'
+            errorMessage={errors.password?.message}
           />
-          {errors.password && (
-            <span className={cx('errorMessage')}>
-              {errors.password.message}
-            </span>
-          )}
-          <label className={cx('formLabel')}>비밀번호 확인</label>
-          <input
+          <label className={cx('formLabel')} htmlFor='passwordConfirm'>
+            비밀번호 확인
+          </label>
+          <AuthInput
+            id='passwordConfirm'
             placeholder='비밀번호를 한번 더 입력해 주세요'
             type='password'
-            className={`${cx('formInput')} ${errors.passwordConfirm ? cx('error') : ''}`}
-            {...register('passwordConfirm')}
-            onBlur={() => trigger('passwordConfirm')}
-            onFocus={() => clearErrors('passwordConfirm')}
+            trigger={trigger}
+            clearErrors={clearErrors}
+            register={register}
+            name='passwordConfirm'
+            errorMessage={errors.passwordConfirm?.message}
           />
-          {errors.passwordConfirm && (
-            <span className={cx('errorMessage')}>
-              {errors.passwordConfirm.message}
-            </span>
-          )}
           <div className={cx('agreeContent')}>
             <input
               type='checkbox'
@@ -160,7 +152,12 @@ export default function index() {
           </Link>
         </div>
       </main>
-      {isModalOpen && <Modal isOpen={isModalOpen}>{modalMessage}</Modal>}
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} size='alert'>
+          {modalMessage}
+          <BaseButton text='확인' size='lg' type='button' />
+        </Modal>
+      )}
     </div>
   );
 }

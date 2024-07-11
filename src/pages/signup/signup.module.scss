@@ -25,31 +25,14 @@
   font-family: 'Pretendard-Medium';
 }
 
+form {
+  padding-top: 22px;
+}
+
 .formLabel {
   color: #333;
   display: block;
   margin-top: 16px;
-}
-
-.formInput {
-  margin-top: 0.6rem;
-  width: 100%;
-  padding: 1.5rem 1.6rem;
-  border-radius: 8px;
-  border: 1px solid #d9d9d9;
-  &.error {
-    border-color: #d6173a; // 에러 시 테두리 색상
-  }
-}
-
-.formLabelEmail {
-  margin-top: 22px;
-}
-
-.errorMessage {
-  display: inline-block;
-  margin-top: 8px;
-  color: #d6173a;
 }
 
 .agreeContent {
@@ -105,4 +88,10 @@
     height: 1px;
     background-color: #5634da; /* 밑줄의 색상 */
   }
+}
+
+.errorMessage {
+  display: block;
+  margin-top: 8px;
+  color: #d6173a;
 }
