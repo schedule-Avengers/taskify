@@ -12,6 +12,7 @@ import { AxiosError } from 'axios';
 import BaseButton from '@components/common/BaseButton';
 import AuthInput from '@/components/common/Input/AuthInput';
 
+
 const cx = classNames.bind(styles);
 
 interface Inputs {
@@ -75,6 +76,7 @@ export default function index() {
             id='email'
             placeholder='이메일을 입력해 주세요'
             type='text'
+
             trigger={trigger}
             clearErrors={clearErrors}
             register={register}

@@ -12,6 +12,7 @@ import { AxiosError } from 'axios';
 import BaseButton from '@components/common/BaseButton';
 import AuthInput from '@/components/common/Input/AuthInput';
 
+
 const cx = classNames.bind(styles);
 
 interface Inputs {
@@ -40,6 +41,7 @@ export default function index() {
   }, [isValid]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+
     try {
       const response = await PostAuthSignIn(data);
       setIsModalOpen(false);
@@ -64,6 +66,7 @@ export default function index() {
   //     navigate('/mydashboard');
   //   }
   // }, [loginError]);
+
 
   return (
     <div className={cx('bg')}>
@@ -121,6 +124,7 @@ export default function index() {
           <BaseButton text='확인' size='lg' type='button' />
         </Modal>
       )}
+
     </div>
   );
 }
