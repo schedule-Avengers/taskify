@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   useForm,
   FieldError,
@@ -6,6 +6,7 @@ import {
   Merge,
   SubmitHandler,
 } from 'react-hook-form';
+import { useMyPage } from '@/hooks/mypage/useMyPage';
 import IconAdd from '@/image/ic_add_withoutbackgound.svg?react';
 import IconX from '@/image/ic_redx.svg?react';
 import classNames from 'classnames/bind';
@@ -20,7 +21,7 @@ type ErrorType =
   | undefined;
 
 type ProfileFormData = {
-  profilePicture: File | null;
+  profilePicture: File | string | null;
   nickname: string;
 };
 
@@ -28,7 +29,17 @@ type ProfileFormProps = {
   originalNickname: string;
 };
 
+type UploadResponse = {
+  profileImageUrl: string;
+};
+
 const ProfileForm: React.FC<ProfileFormProps> = ({ originalNickname }) => {
+  // const { get, profileEdit, profileImageUpload } = useMyPage;
+  const { get, profileImageUpload } = useMyPage;
+  const { mutate: uploadProfileImageMutate } = profileImageUpload();
+  const { data: userInfo, isLoading: isUserLoading, error: userError } = get();
+  console.log(userInfo);
+
   const {
     register,
     handleSubmit,
@@ -51,10 +62,27 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ originalNickname }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     if (file) {
-      setPreview(URL.createObjectURL(file));
-      setValue('profilePicture', file);
+      const formData = new FormData();
+      formData.append('image', file);
+
+      uploadProfileImageMutate(formData, {
+        onSuccess: (uploadResponse: UploadResponse) => {
+          const profileImageUrl = uploadResponse.profileImageUrl;
+          setPreview(profileImageUrl);
+          setValue('profilePicture', profileImageUrl);
+
+          console.log(profileImageUrl);
+        },
+        onError: (error: Error) => {
+          console.error('이미지 업로드 실패:', error);
+        },
+      });
     }
   };
+
+  useEffect(() => {
+    console.log(preview);
+  }, [preview]);
 
   const handleFileRemove = () => {
     setPreview(null);
@@ -80,6 +108,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ originalNickname }) => {
               style={{ display: 'none' }}
               {...register('profilePicture')}
               onChange={handleFileChange}
+              accept='image/*'
             />
             <label htmlFor='profilePicture' className={cx('upload-label')}>
               {preview ? (
