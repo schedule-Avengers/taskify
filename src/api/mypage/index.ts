@@ -1,23 +1,23 @@
-import { instance } from '@/axios/axios';
+import { authInstance } from '@/axios/axios';
 import { putAuthPasswordProps, UpdateUserProps } from '@/types/types';
 
 export const getUser = async () => {
-  const res = await instance.get('/users/me');
+  const res = await authInstance.get('/users/me');
   return res.data;
 };
 
 export const updateUser = async (userData: UpdateUserProps) => {
-  const response = await instance.put(`/users/me`, userData);
+  const response = await authInstance.put(`/users/me`, userData);
   return response.data;
 };
 
 export const changePassword = async (passwordData: putAuthPasswordProps) => {
-  const response = await instance.put(`/auth/password`, passwordData);
+  const response = await authInstance.put(`/auth/password`, passwordData);
   return response.data;
 };
 
 export const uploadProfileImage = async (imageData: FormData) => {
-  const response = await instance.post(`users/me/image`, imageData, {
+  const response = await authInstance.post(`users/me/image`, imageData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
