@@ -187,6 +187,11 @@ export interface getCardProps {
   columnId: number;
 }
 
+export interface UpdateUserProps {
+  nickname: string;
+  profileImageUrl: string | null;
+}
+
 export interface UserInfo {
   id: number;
   email: string;
