@@ -179,3 +179,10 @@ export interface getCardProps {
   cursorId: number;
   columnId: number;
 }
+
+//유저업데이트
+
+export interface UpdateUserProps {
+  nickname: string;
+  profileImageUrl: string | null;
+}
