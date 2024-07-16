@@ -6,16 +6,17 @@ import styles from './modal.module.scss';
 interface ModalProps {
   children: React.ReactNode;
   isOpen: boolean;
+  size: 'alert';
 }
 
 const cx = classNames.bind(styles);
 
-const index: React.FC<ModalProps> = ({ children, isOpen }) => {
+const index: React.FC<ModalProps> = ({ children, isOpen, size }) => {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
     <div className={cx('modal-overlay')}>
-      <div className={cx('modal-content')}>{children}</div>
+      <div className={cx(`modal-content`, `modal-${size}`)}>{children}</div>
     </div>,
     document.getElementById('modal-root') as HTMLElement,
   );

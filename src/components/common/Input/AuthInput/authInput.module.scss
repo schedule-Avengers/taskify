@@ -1,0 +1,36 @@
+.inputContainer {
+  position: relative;
+  // display: flex;
+  // align-items: center;
+}
+
+.formInput {
+  margin-top: 0.6rem;
+  width: 100%;
+  padding: 1.5rem 1.6rem;
+  border-radius: 0.8rem;
+  border: 1px solid #d9d9d9;
+  position: relative;
+  &.error {
+    border-color: #d6173a;
+  }
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  position: absolute;
+  bottom: 1.3rem;
+  right: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9fa6b2;
+  cursor: pointer;
+}
+
+.errorMessage {
+  display: block;
+  margin-top: 0.8rem;
+  color: #d6173a;
+}
