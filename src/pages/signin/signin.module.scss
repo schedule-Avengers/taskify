@@ -1,0 +1,77 @@
+.bg {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  width: 52rem;
+}
+
+.mainTop {
+  width: 19.9rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logoImg {
+  width: 100%;
+}
+
+.mainTopText {
+  font-size: 2rem;
+  margin-top: 1rem;
+  font-family: 'Pretendard-Medium';
+}
+
+.formLabel {
+  color: #333;
+  display: block;
+  margin-top: 16px;
+}
+
+
+.formLabelEmail {
+  margin-top: 22px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1.4rem 22.8rem;
+  margin-top: 21px;
+  border: none;
+  border-radius: 0.8rem;
+  background-color: #5534da;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  &.disabled {
+    background-color: #9fa6b2;
+    cursor: not-allowed;
+  }
+}
+
+.goSignUpContent {
+  display: flex;
+  justify-content: center;
+  margin-top: 26px;
+  width: 100%;
+  color: #333;
+  font-family: 'Pretendard-Regular';
+}
+
+.isUser {
+  margin-right: 5px;
+}
+
+.goSignup {
+  color: #5634da;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #5634da; /* 밑줄의 색상 */
+  }
+}

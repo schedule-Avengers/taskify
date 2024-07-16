@@ -81,7 +81,7 @@ button {
   &:focus {
     background: #1f115b;
   }
-  @media (max-width: 37.4rem) {
+  @include mobile {
     height: 2.8rem;
     font-size: 1.2rem;
   }
@@ -95,7 +95,7 @@ button {
       background: #666666;
       color: #ffffff;
     }
-    @media (max-width: 37.4rem) {
+    @include mobile {
       width: 5.2rem;
     }
   }
@@ -127,10 +127,10 @@ button {
       color: #ffffff;
     }
   }
-  @media (max-width: 76.7rem) {
+  @include tablet {
     width: 7.2rem;
     height: 3rem;
-    @media (max-width: 37.4rem) {
+    @include mobile {
       width: 10.9rem;
       height: 2.8rem;
       font-size: 1.2rem;
@@ -155,7 +155,7 @@ button {
     background: #1f115b;
   }
 
-  @media (max-width: 37.4rem) {
+  @include mobile {
     width: 8.6rem;
     height: 2.8rem;
     font-size: 1.2rem;
@@ -165,7 +165,7 @@ button {
   & .btn-icon {
     width: 1.6rem;
     height: auto;
-    @media (max-width: 37.4rem) {
+    @include mobile {
       width: 1.4rem;
       height: auto;
     }
@@ -187,9 +187,9 @@ button {
     background: #1f115b;
   }
 
-  @media (max-width: 76.7rem) {
+  @include tablet {
     font-size: 1.6rem;
-    @media (max-width: 37.4rem) {
+    @include mobile {
       width: 23.52rem;
       height: 4.2rem;
       font-size: 1.4rem;

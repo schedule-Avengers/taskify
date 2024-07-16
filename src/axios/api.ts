@@ -1,21 +1,28 @@
 import { instance as axios } from './axios';
 import {
-  PostAuthLoginProps,
-  PostCardProps,
+  postAuthSignUpProps,
+  PostAuthSignInProps,
+  // PostCardProps,
   getCardProps,
   putAuthPasswordProps,
+  UserInfo,
 } from '@/types/types';
 
-//put/post 뒤에 type 정의 필요
+//------------ 회원가입 로그인 ---------------
+export async function postAuthSignUp(userInfo: postAuthSignUpProps) {
+  const res = await axios.post<UserInfo>(`/users`, userInfo);
+  //UserInfo 서버로부터 반환되는 데이터의 구조를 명확
+  return res.data;
+}
 
 //email,password 받아서
-export async function postAuthLogin({ email, password }: PostAuthLoginProps) {
+export async function PostAuthSignIn({ email, password }: PostAuthSignInProps) {
   //params로
   const res = await axios.post('auth/login', {
     email,
     password,
   });
-  return res;
+  return res.data;
 }
 
 export async function putAuthPassword({
@@ -31,10 +38,10 @@ export async function putAuthPassword({
 
 //------------ card ---------------
 //카드생성
-export async function postCard({ cardItem }: PostCardProps) {
-  const res = await axios.post('cards', cardItem);
-  return res.status;
-}
+// export async function postCard({ cardItem }: PostCardProps) {
+//   const res = await axios.post('cards', cardItem);
+//   return res.status;
+// }
 
 //카드목록조회
 export async function getCard({ size, cursorId, columnId }: getCardProps) {

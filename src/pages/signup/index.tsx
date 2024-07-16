@@ -1,141 +1,165 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'react-router-dom';
-import Logo from '@/assets/svgs/logo.svg?react';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { validationSchema } from '@hooks/validationSchema';
-import styled from './signup.module.scss';
-import { useEffect, useRef } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { signupValidationSchema } from '@hooks/validationSchema';
+import { postAuthSignUp } from '@/axios/api';
+import classNames from 'classnames/bind';
+import styles from '@/pages/signup/signup.module.scss';
+import Logo from '@/assets/svgs/logo.svg?react';
+import Modal from '@/components/common/Modal/index';
+import { AxiosError } from 'axios';
+import BaseButton from '@components/common/BaseButton';
+import AuthInput from '@/components/common/Input/AuthInput';
 
-//@TODO:
-//1. react-hook-form 변경 ✅
-//2. UI 작업 ✅
-//3.기본 텍스트 1.6rem 설정하기✅
-//4. 유효성검사 동적으로 반응할수 있도록 작업하기
-//5. 기능 넣기
-//6. 반응형 작업
 
-//추가작업
-//input 공동 컴포 만들기
+const cx = classNames.bind(styles);
 
 interface Inputs {
   email: string;
   nickname: string;
   password: string;
   passwordConfirm: string;
+  checkbox: boolean;
 }
 
 export default function index() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalMessage, setModalMessage] = useState<string>('');
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isValid },
+    trigger,
+    clearErrors,
   } = useForm<Inputs>({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(signupValidationSchema),
   });
 
-  const emailRef = useRef<HTMLInputElement | null>(null);
-  const nicknameRef = useRef<HTMLInputElement | null>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
-  const passwordConfirmRef = useRef<HTMLInputElement | null>(null);
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
   useEffect(() => {
-    if (errors.email) {
-      emailRef.current?.focus();
-    } else if (errors.nickname) {
-      nicknameRef.current?.focus();
-    } else if (errors.password) {
-      passwordRef.current?.focus();
-    } else if (errors.passwordConfirm) {
-      passwordConfirmRef.current?.focus();
+    setIsFormValid(isValid);
+  }, [isValid]);
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const response = await postAuthSignUp(data);
+      setModalMessage('가입이 완료되었습니다!');
+      setIsModalOpen(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        navigate('/signin');
+      }, 3000);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        const signUpFailureMessage = error.response?.data.message;
+        setModalMessage(signUpFailureMessage);
+        setIsModalOpen(true);
+      }
     }
-  }, [errors]);
+  };
 
   return (
-    <div className={styled.bg}>
-      <main className={styled.main}>
-        <div className={styled.mainTop}>
-          <Logo className={styled.logoImg} />
-          <p className={styled.mainTopText}>첫 방문을 환영합니다!</p>
+    <div className={cx('bg')}>
+      <main className={cx('main')}>
+        <div className={cx('mainTop')}>
+          <Logo className={cx('logoImg')} />
+          <p className={cx('mainTopText')}>첫 방문을 환영합니다!</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label
-            className={`${styled.formLabel} ${styled.formLabelEmail}`}
-            htmlFor='email'
-          >
+          <label className={cx('formLabel')} htmlFor='email'>
             이메일
           </label>
-          <input
+          <AuthInput
             id='email'
-            placeholder='이메일을 입력해주세요'
+            placeholder='이메일을 입력해 주세요'
             type='text'
-            className={`${styled.formInput} ${errors.email ? styled.error : ''}`}
-            {...register('email')}
-            ref={emailRef}
+
+            trigger={trigger}
+            clearErrors={clearErrors}
+            register={register}
+            name='email'
+            errorMessage={errors.email?.message}
           />
-          {errors.email && (
-            <span className={styled.errorMessage}>{errors.email.message}</span>
-          )}
-          <label className={styled.formLabel} htmlFor='nickname'>
+          <label className={cx('formLabel')} htmlFor='nickname'>
             닉네임
           </label>
-          <input
+          <AuthInput
             id='nickname'
             placeholder='닉네임을 입력해 주세요'
             type='text'
-            className={`${styled.formInput} ${errors.nickname ? styled.error : ''}`}
             {...register('nickname')}
-            ref={nicknameRef}
+            trigger={trigger}
+            clearErrors={clearErrors}
+            register={register}
+            name='nickname'
+            errorMessage={errors.nickname?.message}
           />
-          {errors.nickname && (
-            <span className={styled.errorMessage}>
-              {errors.nickname.message}
-            </span>
-          )}
-          <label className={styled.formLabel}>비밀번호</label>
-          <input
+          <label className={cx('formLabel')} htmlFor='password'>
+            비밀번호
+          </label>
+          <AuthInput
+            id='password'
             placeholder='8자 이상 입력해 주세요'
             type='password'
-            className={`${styled.formInput} ${errors.password ? styled.error : ''}`}
-            {...register('password')}
-            ref={passwordRef}
+            trigger={trigger}
+            clearErrors={clearErrors}
+            register={register}
+            name='password'
+            errorMessage={errors.password?.message}
           />
-          {errors.password && (
-            <span className={styled.errorMessage}>
-              {errors.password.message}
-            </span>
-          )}
-          <label className={styled.formLabel}>비밀번호 확인</label>
-          <input
+          <label className={cx('formLabel')} htmlFor='passwordConfirm'>
+            비밀번호 확인
+          </label>
+          <AuthInput
+            id='passwordConfirm'
             placeholder='비밀번호를 한번 더 입력해 주세요'
             type='password'
-            className={`${styled.formInput} ${errors.passwordConfirm ? styled.error : ''}`}
-            {...register('passwordConfirm')}
-            ref={passwordConfirmRef}
+            trigger={trigger}
+            clearErrors={clearErrors}
+            register={register}
+            name='passwordConfirm'
+            errorMessage={errors.passwordConfirm?.message}
           />
-          {errors.passwordConfirm && (
-            <span className={styled.errorMessage}>
-              {errors.passwordConfirm.message}
-            </span>
-          )}
-          <div className={styled.agreeContent}>
+          <div className={cx('agreeContent')}>
             <input
               type='checkbox'
               id='checkbox'
-              className={styled.agreeCheckbox}
+              className={cx('agreeCheckbox')}
+              {...register('checkbox')}
+              onBlur={() => trigger('checkbox')}
+              onFocus={() => clearErrors('checkbox')}
             />
             <label htmlFor='checkbox'>이용약관에 동의합니다.</label>
           </div>
-          <button className={styled.submitButton} disabled={isSubmitting}>
+          {errors.checkbox && (
+            <span className={cx('errorMessage')}>
+              {errors.checkbox.message}
+            </span>
+          )}
+          <button
+            type='submit'
+            className={`${cx('submitButton')} ${isFormValid ? '' : cx('disabled')}`}
+            disabled={!isFormValid || isSubmitting}
+          >
             가입하기
           </button>
         </form>
-        <div className={styled.goSignUpContent}>
-          <p className={styled.isSignUp}>이미 가입하셨나요?</p>
-          <Link to='/signin'>로그인하기</Link>
+        <div className={cx('goSignUpContent')}>
+          <p className={cx('isSignUp')}>이미 가입하셨나요?</p>
+          <Link to='/signin' className={cx('goSignup')}>
+            로그인하기
+          </Link>
         </div>
       </main>
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} size='alert'>
+          {modalMessage}
+          <BaseButton text='확인' size='lg' type='button' />
+        </Modal>
+      )}
     </div>
   );
 }
