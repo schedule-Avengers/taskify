@@ -12,7 +12,6 @@ import { AxiosError } from 'axios';
 import BaseButton from '@components/common/BaseButton';
 import AuthInput from '@/components/common/Input/AuthInput';
 
-
 const cx = classNames.bind(styles);
 
 interface Inputs {
@@ -35,6 +34,7 @@ export default function index() {
     formState: { errors, isSubmitting, isValid },
     trigger,
     clearErrors,
+    getValues,
   } = useForm<Inputs>({
     resolver: yupResolver(signupValidationSchema),
   });
@@ -61,11 +61,15 @@ export default function index() {
     }
   };
 
+  useEffect(() => {}, [getValues]);
+
   return (
     <div className={cx('bg')}>
       <main className={cx('main')}>
         <div className={cx('mainTop')}>
-          <Logo className={cx('logoImg')} />
+          <div className={cx('imgWrapper')}>
+            <Logo className={cx('logoImg')} />
+          </div>
           <p className={cx('mainTopText')}>첫 방문을 환영합니다!</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,11 +80,10 @@ export default function index() {
             id='email'
             placeholder='이메일을 입력해 주세요'
             type='text'
-
+            name='email'
             trigger={trigger}
             clearErrors={clearErrors}
             register={register}
-            name='email'
             errorMessage={errors.email?.message}
           />
           <label className={cx('formLabel')} htmlFor='nickname'>
@@ -90,11 +93,10 @@ export default function index() {
             id='nickname'
             placeholder='닉네임을 입력해 주세요'
             type='text'
-            {...register('nickname')}
+            name='nickname'
             trigger={trigger}
             clearErrors={clearErrors}
             register={register}
-            name='nickname'
             errorMessage={errors.nickname?.message}
           />
           <label className={cx('formLabel')} htmlFor='password'>
@@ -104,10 +106,10 @@ export default function index() {
             id='password'
             placeholder='8자 이상 입력해 주세요'
             type='password'
+            name='password'
             trigger={trigger}
             clearErrors={clearErrors}
             register={register}
-            name='password'
             errorMessage={errors.password?.message}
           />
           <label className={cx('formLabel')} htmlFor='passwordConfirm'>
@@ -117,10 +119,10 @@ export default function index() {
             id='passwordConfirm'
             placeholder='비밀번호를 한번 더 입력해 주세요'
             type='password'
+            name='passwordConfirm'
             trigger={trigger}
             clearErrors={clearErrors}
             register={register}
-            name='passwordConfirm'
             errorMessage={errors.passwordConfirm?.message}
           />
           <div className={cx('agreeContent')}>
@@ -154,12 +156,10 @@ export default function index() {
           </Link>
         </div>
       </main>
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} size='alert'>
-          {modalMessage}
-          <BaseButton text='확인' size='lg' type='button' />
-        </Modal>
-      )}
+      <Modal isOpen={isModalOpen} size='alert'>
+        {modalMessage}
+        <BaseButton text='확인' size='lg' type='button' />
+      </Modal>
     </div>
   );
 }
