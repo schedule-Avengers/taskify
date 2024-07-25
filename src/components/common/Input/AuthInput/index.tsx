@@ -1,39 +1,47 @@
-import { forwardRef, useState } from 'react';
+import { useState, HTMLInputTypeAttribute } from 'react';
 import {
   UseFormTrigger,
   UseFormClearErrors,
   UseFormRegister,
   FieldValues,
+  Path,
 } from 'react-hook-form';
-import classNames from 'classnames/bind';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
+import classNames from 'classnames/bind';
 import styles from './authInput.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface InputProps<T extends FieldValues> {
+interface Inputs {
+  email?: string;
+  nickname?: string;
+  password?: string;
+  passwordConfirm?: string;
+  checkbox?: boolean;
+}
+
+interface InputProps<TFormInput extends FieldValues = FieldValues> {
   id: string;
   placeholder?: string;
-  type: 'password' | 'text';
-  name: string;
-  trigger: UseFormTrigger<T>;
-  clearErrors: UseFormClearErrors<T>;
-  register: UseFormRegister<T>;
+  type?: HTMLInputTypeAttribute;
+  name: Path<TFormInput>;
+  register: UseFormRegister<TFormInput>;
+  trigger: UseFormTrigger<TFormInput>;
+  clearErrors: UseFormClearErrors<TFormInput>;
   errorMessage?: string | '';
 }
 
-const index = forwardRef<HTMLInputElement, InputProps<any>>((props, ref) => {
-  const {
-    id,
-    placeholder,
-    errorMessage,
-    type,
-    trigger,
-    clearErrors,
-    register,
-    name,
-  } = props;
-
+function index<TFormInput extends Inputs>({
+  id,
+  placeholder,
+  type,
+  name,
+  register,
+  trigger,
+  clearErrors,
+  errorMessage,
+  ...props
+}: InputProps<TFormInput>) {
   const [inputType, setInputType] = useState(type);
 
   const toggleInputType = () => {
@@ -49,9 +57,9 @@ const index = forwardRef<HTMLInputElement, InputProps<any>>((props, ref) => {
           placeholder={placeholder}
           type={inputType}
           {...register(name)}
+          {...props}
           onBlur={() => trigger(name)}
           onFocus={() => clearErrors(name)}
-          ref={ref}
         />
         {type === 'password' && (
           <button
@@ -72,7 +80,7 @@ const index = forwardRef<HTMLInputElement, InputProps<any>>((props, ref) => {
       )}
     </>
   );
-});
+}
 
 index.displayName = 'index';
 

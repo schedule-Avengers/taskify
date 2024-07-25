@@ -12,7 +12,6 @@ import { AxiosError } from 'axios';
 import BaseButton from '@components/common/BaseButton';
 import AuthInput from '@/components/common/Input/AuthInput';
 
-
 const cx = classNames.bind(styles);
 
 interface Inputs {
@@ -41,7 +40,6 @@ export default function index() {
   }, [isValid]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-
     try {
       const response = await PostAuthSignIn(data);
       setIsModalOpen(false);
@@ -57,22 +55,13 @@ export default function index() {
     }
   };
 
-  // useEffect를 사용하여 컴포넌트가 마운트되거나 특정 상태가 변경될 때마다 로그인 상태를 확인하고, 사용자가 이미 로그인된 상태라면 대시보드로 리다이렉트합니다.
-  // 이는 사용자가 로그인 페이지에 직접 접근할 때 자동으로 대시보드로 이동하도록 합니다.
-
-  // useEffect(() => {
-  //   const accessToken = localStorage.getItem('token');
-  //   if (accessToken) {
-  //     navigate('/mydashboard');
-  //   }
-  // }, [loginError]);
-
-
   return (
     <div className={cx('bg')}>
       <main className={cx('main')}>
         <div className={cx('mainTop')}>
-          <Logo className={cx('logoImg')} />
+          <div className={cx('imgWrapper')}>
+            <Logo className={cx('logoImg')} />
+          </div>
           <p className={cx('mainTopText')}>오늘도 만나서 반가워요!</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -124,54 +113,6 @@ export default function index() {
           <BaseButton text='확인' size='lg' type='button' />
         </Modal>
       )}
-
     </div>
   );
 }
-
-//로그인 성공시 true false를 보내고 토큰이 유효한지 확인??
-
-// 프론트엔드가 토큰을 받아 로컬 스토리지 또는 쿠키에 저장합니다
-
-// (추후)프론트엔드가 저장된 토큰을 사용하여 인증된 요청을 보냅니다.
-
-// const instance = axios.create({
-//   baseURL: 'http://localhost:3000',
-//   headers: { 'Authorization': `Bearer ${token}` }
-// });
-
-// // 예시: 인증된 사용자 정보 가져오기
-// instance.get('/api/userinfo')
-//   .then(response => {
-//     console.log(response.data);
-//   })
-//   .catch(error => {
-//     console.error('Error fetching user info', error);
-//   });
-
-// 백엔드가 요청을 받을 때 토큰을 확인하여 사용자 인증 상태를 관리합니다.
-
-// function useAuth() {
-//   const history = useHistory();
-
-//   useEffect(() => {
-//     const token = localStorage.getItem('token');
-//     if (!token) {
-//       history.push('/login');
-//     }
-
-//     const checkTokenValidity = () => {
-//       // 토큰 유효성 검사 (옵션으로 서버에서 토큰을 검증할 수 있습니다)
-//       const decodedToken = jwt.decode(token);
-//       if (decodedToken.exp < Date.now() / 1000) {
-//         alert('토큰이 만료되었습니다. 다시 로그인해주세요.');
-//         localStorage.removeItem('token');
-//         history.push('/login');
-//       }
-//     };
-
-//     checkTokenValidity();
-//   }, [history]);
-
-//   return null;
-// }
