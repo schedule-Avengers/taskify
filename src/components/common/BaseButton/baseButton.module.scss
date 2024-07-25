@@ -27,8 +27,7 @@ button {
   font-size: 1.8rem;
   border: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background: #5534da;
   }
 }
@@ -43,8 +42,7 @@ button {
   font-size: 1.6rem;
   border: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background: #1f115b;
   }
 
@@ -52,8 +50,7 @@ button {
     color: #787486;
     border: 0.1rem solid #d9d9d9;
     background: #ffffff;
-    &:hover,
-    &:focus {
+    &:hover {
       background: #666666;
       color: #ffffff;
     }
@@ -77,8 +74,7 @@ button {
   font-size: 1.4rem;
   border: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background: #1f115b;
   }
   @include mobile {
@@ -90,8 +86,7 @@ button {
     color: #5534da;
     border: 0.1rem solid #d9d9d9;
     background: #ffffff;
-    &:hover,
-    &:focus {
+    &:hover {
       background: #666666;
       color: #ffffff;
     }
@@ -112,8 +107,7 @@ button {
   font-size: 1.4rem;
   border: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background: #1f115b;
   }
 
@@ -121,8 +115,7 @@ button {
     color: #5534da;
     border: 0.1rem solid #d9d9d9;
     background: #ffffff;
-    &:hover,
-    &:focus {
+    &:hover {
       background: #666666;
       color: #ffffff;
     }
@@ -150,8 +143,7 @@ button {
   font-size: 1.4rem;
   border: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background: #1f115b;
   }
 
@@ -182,8 +174,7 @@ button {
   font-size: 1.8rem;
   border: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background: #1f115b;
   }
 
